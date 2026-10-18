@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><style>@media (max-width:460px){#card{left:8px!important;right:auto!important;top:auto!important;bottom:96px!important;max-width:200px!important;font-size:11px!important;max-height:42vh;overflow:auto}#card h3{font-size:14px!important;margin:2px 0!important}#card td{padding:1px 0!important}}#card td:first-child{color:#a3afc2;padding-right:10px}#card td:last-child{text-align:right;font-variant-numeric:tabular-nums;color:#eef2f8}#card tr+tr td{border-top:1px solid rgba(255,255,255,.05)}#jump{min-width:34px;color-scheme:dark}#nowPill{position:fixed;left:50%;transform:translateX(-50%);bottom:92px;z-index:20;background:rgba(245,165,36,.16);color:#f5c060;border:1px solid rgba(245,165,36,.45);border-radius:14px;padding:4px 12px;white-space:nowrap;max-width:calc(100% - 40px);overflow:hidden;text-overflow:ellipsis;font:600 11.5px -apple-system,system-ui,sans-serif;cursor:pointer;backdrop-filter:blur(8px)}#nowPill[hidden]{display:none}@media (max-width:460px){#card tr:nth-child(n+5){display:none}#card{background:rgba(10,13,20,.72)!important}#nowPill{bottom:auto;top:88px}}</style></head><body>
+<canvas id="c"></canvas>
+<div id="labels"></div>
+<div id="loading">Computing today's positions…</div>
+<div id="tools">
+  <input id="search" placeholder="Search…" list="names" aria-label="Search bodies" autocomplete="off">
+  <datalist id="names"></datalist>
+  <button id="btnDrawer" aria-label="Layers, moons and about" title="Layers · Moons · About">☰</button>
+</div>
+<aside id="drawer" hidden>
+  <nav class="tabs" role="tablist">
+    <button data-tab="layers">Layers</button><button data-tab="tonight">Tonight</button><button data-tab="moons">Moons</button><button data-tab="about">About</button>
+  </nav>
+  <div id="tabBody"></div>
+</aside>
+<div id="card" hidden></div>
+<div id="scale"><div id="scaleBar"></div><span id="scaleTxt"></span><span id="ltTxt"></span></div>
+<div id="timebar">
+  <div class="row top"><span id="date"></span><span id="rateTxt"></span></div>
+  <div class="row">
+    <button id="bRev" aria-label="Reverse time" title="Reverse">⏪</button>
+    <button id="bPause" aria-label="Pause or play" title="Pause / play">⏸</button>
+    <button id="b1x" title="Real time">1×</button>
+    <input id="speed" type="range" min="0" max="1000" value="0" aria-label="Speed, 1 second per second to 1 year per second">
+    <button id="bNow" title="Back to now">Now</button>
+    <input id="jump" type="date" aria-label="Jump to date" min="1000-01-01" max="3000-12-31">
+  </div>
+</div>
+<div id="compact"><span id="cDate"></span><span id="cEarth"></span><button id="cPlay" aria-label="Play">▶</button></div>
+<script src="js/data.js"></script>
+<script src="js/ephem.js"></script>
+<script src="js/state.js"></script>
+<script src="js/shaders.js"></script>
+<script src="js/belts.js"></script>
+<script src="js/ui.js"></script>
+<script type="module" src="js/main.js"></script>
+</body></html>
