@@ -39,11 +39,11 @@ Any static server works: `npx serve`, VS Code Live Server or GitHub Pages. The f
 
 **Look around**
 - Drag to orbit, scroll or pinch to zoom, click any body to fly to it and follow it.
-- `/` search · `H` Sun · `E` Earth · `Esc` closes the info card
+- `/` search · `H` Sun · `E` Earth · `T` planet tour, Mercury to Pluto (press again to stop) · `?` lists every key · `Esc` closes the info card
 
 **Time**
 - `Space` pause or play · `R` real time · `N` now · `\` reverse
-- `[` slower · `]` faster · `.` / `,` step a day forward or back · `y` / `Y` a year forward or back
+- `[` slower · `]` faster · `.` / `,` step a day forward or back · `>` / `<` a month · `y` / `Y` a year forward or back
 
 **Layers**
 - `L` labels · `O` orbits · `M` moons · `B` belts · `C` comets · `K` Kuiper Belt
@@ -53,7 +53,7 @@ Any static server works: `npx serve`, VS Code Live Server or GitHub Pages. The f
 - `WASD` fly · `E` / `Q` up and down · `Shift` boost · drag to look
 - `F` scan · `G` go to · `T` orbit · `Esc` park & exit. Where you park is saved, so Fly UFO picks up there.
 
-The drawer (☰) has Layers, Tonight, Moons and About tabs.
+The drawer (☰) has Layers (with saved views), Tonight, Moons and About tabs.
 
 ## 🗂 Files
 
@@ -62,6 +62,7 @@ The drawer (☰) has Layers, Tonight, Moons and About tabs.
 | `index.html` | The whole Atlas: orbital data, ephemeris maths, shaders, scene, interface |
 | `ufo.css` | Styling for UFO mode |
 | `js/ship.js` | The UFO's saucer model and its effects |
+| `js/views.js` | Saved views: bookmarks of the camera, date and layers |
 | `js/ufo.js` | UFO mode: flying, scanning, go to and orbit |
 | `LICENSE` | MIT |
 

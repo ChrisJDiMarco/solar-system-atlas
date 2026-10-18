@@ -25,7 +25,7 @@ button.on{background:rgba(245,165,36,.18);border-color:rgba(245,165,36,.5);color
 #card{position:fixed;left:10px;bottom:96px;width:min(230px,calc(100% - 20px));background:var(--glass);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 #card h3{margin:0 0 2px;font-size:15px}#card .k{color:var(--ink3);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em}
 #card .k{padding-right:56px}#card table{width:100%;border-collapse:collapse;margin-top:6px}#card td{padding:1.5px 0;font-size:11px}#card td:last-child{text-align:right;font-variant-numeric:tabular-nums}
-#card td:first-child{color:#aeb7c6}#card{background:rgba(10,13,21,.84);box-shadow:0 8px 28px rgba(0,0,0,.45)}#card .k{color:#7d889b}#card .x{position:absolute;top:6px;right:6px;padding:0 6px}
+#card td:first-child{color:#aeb7c6}#card{background:rgba(10,13,21,.84);box-shadow:0 8px 28px rgba(0,0,0,.45)}#card .k{color:#98a3b6}#card .x{position:absolute;top:6px;right:6px;padding:0 6px}#card .cp{position:absolute;top:6px;right:84px;padding:0 6px;font-size:10.5px;min-height:20px}#card .cp:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
 #card table{display:block;max-height:calc(100vh - 290px);min-height:60px;overflow:auto}#card tbody{display:table;width:100%}
 @media (max-height:560px){#card{padding:8px 10px;width:min(210px,calc(100% - 20px));bottom:90px;background:rgba(10,13,20,.8)}#card h3{font-size:13.5px}#card td{font-size:10.5px}}
 #scale{position:fixed;left:12px;bottom:84px;font-size:10px;color:var(--ink2);display:none}
@@ -35,7 +35,7 @@ button.on{background:rgba(245,165,36,.18);border-color:rgba(245,165,36,.5);color
 #date{font-variant-numeric:tabular-nums;font-weight:600;font-size:13px;letter-spacing:.01em}
 #timebar button{min-width:32px;min-height:28px}#rateTxt{color:var(--gold);font-size:11px}
 #speed{flex:1;min-width:40px;accent-color:var(--gold)}
-#jump{width:24px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:8px;color:var(--ink);color-scheme:dark;padding:3px}
+#jump{width:30px;min-height:28px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:8px;color:var(--ink);color-scheme:dark;padding:3px}
 #compact{display:none}
 #card.mini table{display:none}#card .min{position:absolute;top:6px;right:34px;padding:0 6px}
 body.cardOpen #scale{display:none!important}
@@ -47,10 +47,18 @@ body.cardOpen #scale{display:none!important}
  #compact{display:flex;position:fixed;left:8px;right:8px;bottom:8px;gap:6px;align-items:center;background:var(--glass);border-radius:10px;padding:6px 8px;flex-wrap:wrap}
  #cDate{font-weight:600;flex:1 1 100%}#cEarth{color:var(--ink2);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 .tabs button{min-height:30px}.lay{min-height:30px}#rateTxt{font-weight:600}#card td:first-child{color:#bcc5d3}.lb.moon{color:#b4bfd0}
+#cardShow{position:fixed;top:48px;left:10px;z-index:12;max-width:calc(100% - 150px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--ink);font-size:11.5px}
+#cardShow[hidden]{display:none}body.ufoOn #cardShow{display:none}#cardShow:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.vw{display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid var(--line)}.vw>button:first-child{flex:1;min-width:0;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vs{color:var(--ink3);font-size:10.5px;white-space:nowrap}.vx{padding:0 7px}.vempty{color:var(--ink2);margin:4px 0}.seg button:disabled{opacity:.45;cursor:default}
 #card td{font-size:11.5px}.lb{font-size:11px}.lb.planet{font-size:12px}#timebar button{min-height:32px}
 @media (min-width:600px){#search{width:180px}#card{bottom:100px}}
 
-</style><style>@media (max-width:460px){#card{left:8px!important;right:auto!important;top:auto!important;bottom:96px!important;max-width:200px!important;font-size:11px!important;max-height:42vh;overflow:auto}#card h3{font-size:14px!important;margin:2px 0!important}#card td{padding:1px 0!important}}#card td:first-child{color:#a3afc2;padding-right:10px}#card td:last-child{text-align:right;font-variant-numeric:tabular-nums;color:#eef2f8}#card tr+tr td{border-top:1px solid rgba(255,255,255,.05)}#jump{min-width:34px;color-scheme:dark}#nowPill{position:fixed;left:50%;transform:translateX(-50%);bottom:92px;z-index:20;background:rgba(245,165,36,.16);color:#f5c060;border:1px solid rgba(245,165,36,.45);border-radius:14px;padding:4px 12px;white-space:nowrap;max-width:calc(100% - 40px);overflow:hidden;text-overflow:ellipsis;font:600 11.5px -apple-system,system-ui,sans-serif;cursor:pointer;backdrop-filter:blur(8px)}#nowPill[hidden]{display:none}@media (max-width:460px){#card{background:rgba(10,13,20,.72)!important}#nowPill{bottom:auto;top:88px}}</style></head><body>
+</style><style>@media (max-width:460px){#card{left:8px!important;right:auto!important;top:auto!important;bottom:96px!important;max-width:200px!important;font-size:11px!important;max-height:42vh;overflow:auto}#card h3{font-size:14px!important;margin:2px 0!important}#card td{padding:1px 0!important}}#card td:first-child{color:#a3afc2;padding-right:10px}#card td:last-child{text-align:right;font-variant-numeric:tabular-nums;color:#eef2f8}#card tr+tr td{border-top:1px solid rgba(255,255,255,.05)}#jump{width:34px;min-width:34px;min-height:32px;cursor:pointer;color-scheme:dark}
+#toast{border-radius:14px;max-width:calc(100% - 24px);width:max-content;text-align:center;line-height:1.35;padding:6px 12px}
+/* icon-only jump control: the date text is hidden (it read as "mm"), the calendar stays and opens the picker */
+#jump::-webkit-datetime-edit,#jump::-webkit-datetime-edit-fields-wrapper,#jump::-webkit-datetime-edit-text{color:transparent}
+#jump::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.9;margin:0;padding:0}#nowPill{position:fixed;left:50%;transform:translateX(-50%);bottom:92px;z-index:20;background:rgba(245,165,36,.16);color:#f5c060;border:1px solid rgba(245,165,36,.45);border-radius:14px;padding:4px 12px;white-space:nowrap;max-width:calc(100% - 40px);overflow:hidden;text-overflow:ellipsis;font:600 11.5px -apple-system,system-ui,sans-serif;cursor:pointer;backdrop-filter:blur(8px)}#nowPill[hidden]{display:none}@media (max-width:460px){#card{background:rgba(10,13,20,.72)!important}#nowPill{bottom:auto;top:88px}}</style></head><body>
 <canvas id="c"></canvas>
 <div id="labels"></div>
 <div id="loading">Computing today's positions…</div>
@@ -81,6 +89,7 @@ body.cardOpen #scale{display:none!important}
 </div>
 <div id="ufoRet" hidden aria-hidden="true"></div>
 <div id="card" hidden></div>
+<button id="cardShow" hidden></button>
 <div id="scale"><div id="scaleBar"></div><span id="scaleTxt"></span><span id="ltTxt"></span></div>
 <div id="timebar">
   <div class="row top"><span id="date"></span><span id="rateTxt"></span></div>
@@ -90,7 +99,7 @@ body.cardOpen #scale{display:none!important}
     <button id="b1x" title="Real time">1×</button>
     <input id="speed" type="range" min="0" max="1000" value="0" aria-label="Speed, 1 second per second to 1 year per second">
     <button id="bNow" title="Back to now">Now</button>
-    <input id="jump" type="date" aria-label="Jump to date" min="1000-01-01" max="3000-12-31">
+    <input id="jump" type="date" aria-label="Jump to date (1000–3000 AD)" title="Jump to a date (1000–3000 AD)" min="1000-01-01" max="3000-12-31">
   </div>
 </div>
 <div id="compact"><span id="cDate"></span><span id="cEarth"></span><button id="cPlay" aria-label="Play">▶</button></div>
@@ -401,7 +410,7 @@ window.App = window.App || {};
 (function () {
   const LAYERS = { orbits: true, labels: true, moons: true, belts: true, kuiper: true, oort: true, helio: true, p9: true, craft: true, comets: true, stars: true, milky: true };
   const def = () => ({ v: 1, time: { live: true, jd: null, rate: 1, paused: false }, camera: { focus: 'Sun', dist: null, az: 0.6, el: 0.35 },
-    layers: { ...LAYERS }, moonFilter: {}, scale: { size: 'visible', dist: 'log' }, p9: 'brief', tab: 'layers', card: true, drawer: false, recent: [], scans: [], ufo: null });
+    layers: { ...LAYERS }, moonFilter: {}, scale: { size: 'visible', dist: 'log' }, p9: 'brief', tab: 'layers', card: true, cardMini: false, drawer: false, recent: [], scans: [], ufo: null });
   function load() {
     const s = def();
     let m = null; try { m = window.cabinet && cabinet.recall ? cabinet.recall('atlas', null) : null; } catch (e) {}
@@ -461,6 +470,13 @@ window.App = window.App || {};
       if (isNaN(d)) throw new Error('That date could not be read.');
       App.sim.jd = Math.max(MIN_JD, Math.min(MAX_JD, App.E.dateToJd(d))); S.time.live = false; App.save(); emit('time');
       return App.sim.jd;
+    },
+    // steps the Atlas by a day or a month and holds the clock there, so the step stays put (, . < > keys)
+    step(n, unit) {
+      n = Number(n); if (!Number.isFinite(n)) throw new Error('That step could not be read.');
+      let jd = App.sim.jd;
+      if (unit === 'month') { const d = App.E.jdToDate(jd); d.setUTCMonth(d.getUTCMonth() + n); jd = App.E.dateToJd(d); } else jd += n;
+      App.sim.jd = Math.max(MIN_JD, Math.min(MAX_JD, jd)); S.time.live = false; S.time.paused = true; App.save(); emit('time'); return App.sim.jd;
     },
     focus(name) { if (App.bodies && !App.bodies[name]) throw new Error('No body named ' + name + ' in the Atlas.'); S.camera.focus = name; if (name !== 'Sun') S.recent = [name, ...S.recent.filter(x => x !== name)].slice(0, 6); App.save(); emit('focus'); },
     toggleLayer(k, v) { if (!(k in S.layers)) throw new Error('No layer ' + k); S.layers[k] = typeof v === 'boolean' ? v : !S.layers[k]; App.save(); emit('layers'); return S.layers[k]; },
@@ -758,7 +774,7 @@ App.Belts = (function () {
 window.App = window.App || {};
 App.ui = (function () {
   const $ = (id) => document.getElementById(id), S = App.state, E = App.E, D = App.D;
-  let ctx = null, sel = null;
+  let ctx = null, sel = null, cardHtml = '', copiedAt = 0;
   const LAYERS = [['orbits', 'Orbits'], ['labels', 'Labels'], ['moons', 'Moons'], ['belts', 'Asteroid belts · Trojans · Hildas'], ['kuiper', 'Kuiper belt · TNOs'], ['oort', 'Oort cloud'],
     ['helio', 'Heliosphere'], ['p9', 'Planet Nine (hypothetical)'], ['craft', 'Spacecraft'], ['comets', 'Comets'], ['stars', 'Stars'], ['milky', 'Milky Way']];
   const MAXR = 3.15576e7, LMAX = Math.log10(MAXR);
@@ -831,7 +847,20 @@ App.ui = (function () {
     if (b.kind === 'hyp') rows.push(['Orbit', D.p9[S.p9].label], ['Shown at', 'aphelion: its likeliest sky region']);
     const _tb = c.querySelector('table'), _st = _tb ? _tb.scrollTop : 0;
     c.classList.toggle('mini', !!S.cardMini); document.body.classList.add('cardOpen');
-    c.innerHTML = `<button class="min" aria-label="${S.cardMini ? 'Expand' : 'Collapse'} details" title="${S.cardMini ? 'Show details' : 'Collapse'}">${S.cardMini ? '▴' : '▾'}</button><button class="x" aria-label="Close">×</button><div class="k">${kindName}${est}</div><h3>${b.name}</h3><table>${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</table>`;
+    const copied = Date.now() - copiedAt < 1600;
+    const inner = `<button class="cp" aria-label="Copy ${b.name} facts" title="Copy these facts">${copied ? 'Copied' : 'Copy'}</button><button class="min" aria-label="${S.cardMini ? 'Expand' : 'Collapse'} details" title="${S.cardMini ? 'Show details' : 'Collapse'}">${S.cardMini ? '▴' : '▾'}</button><button class="x" aria-label="Close">×</button><div class="k">${kindName}${est}</div><h3>${b.name}</h3><table>${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</table>`;
+    // the tick redraws this card four times a second: rebuild only when what it shows changes, so focus and text selection survive
+    if (!c.hidden && inner === cardHtml) return;
+    cardHtml = inner; c.innerHTML = inner;
+    // Copy the card as plain text (from a tap, through cabinet.copy); the date is the Atlas date, not the wall clock
+    c.querySelector('.cp').onclick = async (ev) => {
+      const btn = ev.currentTarget, plain = (s) => String(s).replace(/<[^>]+>/g, '').trim();
+      const text = [`${b.name} · ${kindName} · Solar System Atlas, ${E.jdToDate(App.sim.jd).toISOString().slice(0, 10)}`, ...rows.map(r => `${plain(r[0])}: ${plain(r[1])}`)].join('\n');
+      if (!window.cabinet || !cabinet.copy) { toast('Copy is not available here'); return; }
+      try { await cabinet.copy(text); } catch (er) { toast('Could not copy: ' + (er && er.message || 'try again')); return; }
+      // the label is kept in the card's state, so the next redraw shows "Copied" for 1.6 s and then "Copy" again
+      copiedAt = Date.now(); btn.textContent = 'Copied'; cardHtml = cardHtml.replace('>Copy</button>', '>Copied</button>');
+    };
     c.querySelector('.x').onclick = () => { c.hidden = true; document.body.classList.remove('cardOpen'); App.actions.setCard(false); };
     c.querySelector('.min').onclick = () => { App.actions.setCardMini(!S.cardMini); card(); }; c.hidden = false; const t2 = c.querySelector('table'); if (t2 && _st) t2.scrollTop = _st;
   }
@@ -865,15 +894,34 @@ App.ui = (function () {
     let d = lon(jd + .5) - lon(jd - .5); d = Math.atan2(Math.sin(d), Math.cos(d)); const deg = d * 180 / Math.PI;
     return deg < 0 ? '℞ retrograde (' + Math.abs(deg).toFixed(2) + '°/day)' : 'prograde (+' + deg.toFixed(2) + '°/day)';
   }
-  function moonPhase() {
-    const m = ctx.bodies.Moon, e = ctx.bodies.Earth; if (!m || !e) return '';
+  // The Moon's phase from the Atlas's own positions: { nm, ill } (ill 0 to 1), or null before the bodies exist
+  function moonState() {
+    const m = ctx.bodies.Moon, e = ctx.bodies.Earth; if (!m || !e) return null;
     const gx = m.h[0] - e.h[0], gy = m.h[1] - e.h[1], gz = m.h[2] - e.h[2], sx = -e.h[0], sy = -e.h[1], sz = -e.h[2];
-    const c = (gx * sx + gy * sy + gz * sz) / (Math.hypot(gx, gy, gz) * Math.hypot(sx, sy, sz)); if (!isFinite(c)) return '';
+    const c = (gx * sx + gy * sy + gz * sz) / (Math.hypot(gx, gy, gz) * Math.hypot(sx, sy, sz)); if (!isFinite(c)) return null;
     const ill = (1 - c) / 2; let d = Math.atan2(gy, gx) - Math.atan2(sy, sx); d = Math.atan2(Math.sin(d), Math.cos(d)); const wax = d > 0;
     const nm = ill < .03 ? 'New moon' : ill > .97 ? 'Full moon' : (ill < .45 ? (wax ? 'Waxing crescent' : 'Waning crescent') : ill > .55 ? (wax ? 'Waxing gibbous' : 'Waning gibbous') : (wax ? 'First quarter' : 'Last quarter'));
-    return `<div class="tn" data-f="Moon" role="button" tabindex="0"><b>Moon</b><span>${nm} · ${Math.round(ill * 100)}% lit</span></div>`;
+    return { nm, ill };
+  }
+  function moonPhase() {
+    const s = moonState(); if (!s) return '';
+    return `<div class="tn" data-f="Moon" role="button" tabindex="0"><b>Moon</b><span>${s.nm} · ${Math.round(s.ill * 100)}% lit</span></div>`;
+  }
+  // Once a day, on a live view, one line about the Moon right now (the Atlas's own numbers; the day is remembered)
+  function skyOfDay() {
+    if (!S.time.live || !ctx) return;
+    const day = new Date().toLocaleDateString('en-CA'); let seen = null;
+    try { seen = cabinet.recall('skyDay', null); } catch (e) {}
+    if (seen === day) return;
+    const s = moonState(); if (!s) return;
+    try { cabinet.remember('skyDay', day); } catch (e) {}
+    // foresight: if a sky event falls within the month, say so in the same line
+    let soon = ''; try { const nx = nextEvent(); if (nx && nx.jd - App.sim.jd < 30) soon = ' · ' + nx.label + (nx.jd - App.sim.jd < 1 ? ' today' : ' in ' + Math.round(nx.jd - App.sim.jd) + ' d'); } catch (e) {}
+    toast('Moon now: ' + s.nm + ' · ' + Math.round(s.ill * 100) + '% lit' + soon, soon ? 6500 : 5000);
   }
   // Next oppositions: when Earth's heliocentric longitude passes the planet's (scan daily from the sim date)
+  // the raw events behind each Tonight list (kept so "next sky event" can read them without parsing HTML)
+  let oppList = [], cjList = [], eclList = [], evList = [];
   let oppCache = { key: null, html: '' };
   function oppositions() {
     const jd0 = Math.floor(App.sim.jd); if (oppCache.key === jd0) return oppCache.html;
@@ -887,7 +935,7 @@ App.ui = (function () {
         prev = s;
       }
     }
-    out.sort((a, b) => a.jd - b.jd);
+    out.sort((a, b) => a.jd - b.jd); oppList = out;
     oppCache = { key: jd0, html: out.length ? `<div class="k" style="color:var(--ink3);margin-top:8px">Next oppositions · best viewing</div>` + out.map(o => { const dd = Math.round(o.jd - App.sim.jd); return `<div class="tn" data-f="${o.n}" role="button" tabindex="0"><b>${o.n}</b><span>${E.jdToDate(o.jd).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })} · ${dd <= 0 ? 'now' : 'in ' + dd + ' d'}</span></div>`; }).join('') : '' };
     return oppCache.html;
   }
@@ -903,10 +951,10 @@ App.ui = (function () {
         const s = g[a].map((u, d) => Math.acos(Math.max(-1, Math.min(1, u[0] * g[b][d][0] + u[1] * g[b][d][1] + u[2] * g[b][d][2]))) * 180 / Math.PI);
         for (let d = 1; d < N - 1; d++) if (s[d] < 4 && s[d] <= s[d - 1] && s[d] < s[d + 1]) out.push({ jd: jd0 + d, n: names[a] + ' – ' + names[b], sep: s[d] });
       }
-      out.sort((x, y) => x.jd - y.jd);
-      html = out.length ? `<div class="k" style="color:var(--ink3);margin-top:8px">Planet conjunctions &lt;4° <span class="est">geocentric</span> · tap to jump</div>` + out.slice(0, 4).map(o => `<div class="tn" data-j="${o.jd}" role="button" tabindex="0"><b>${o.n}</b><span>${E.jdToDate(o.jd).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })} · ${o.sep.toFixed(1)}° apart</span></div>`).join('') : '';
-    } catch (er) { html = ''; }
-    cjCache = { key: jd0, html }; return html;
+      out.sort((x, y) => x.jd - y.jd); cjList = out;
+      html = out.length ? `<div class="k" style="color:var(--ink3);margin-top:8px">Planet conjunctions &lt;4° <span class="est">geocentric</span> · tap to jump</div>` + out.slice(0, 4).map(o => `<div class="tn" data-j="${o.jd}" role="button" tabindex="0"><b>${o.n}</b><span>${E.jdToDate(o.jd).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })} · ${o.sep.toFixed(1)}° apart</span></div>`).join('') : '<p class="vempty">No planet pairs come within 4° of each other in the next 14 months.</p>';
+    } catch (er) { html = '<p class="vempty">Could not work out the conjunctions just now.</p>'; cjList = []; console.warn('Atlas conjunctions', er); }
+    cjCache ={ key: jd0, html }; return html;
   }
   function bestBet(rows) {
     const order = ['Venus', 'Jupiter', 'Mars', 'Saturn', 'Mercury'];
@@ -931,10 +979,10 @@ App.ui = (function () {
         }
         pn = fn; pf = ff;
       }
-      out.sort((a, b) => a.jd - b.jd);
-      html = out.length ? `<div class="k" style="color:var(--ink3);margin-top:8px">Next eclipses <span class="est">estimate</span> · tap to jump</div>` + out.map(o => `<div class="tn" data-j="${o.jd}" role="button" tabindex="0"><b>${o.sol ? 'Solar' : 'Lunar'}</b><span>${E.jdToDate(o.jd).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })} · ${o.kind}</span></div>`).join('') : '';
-    } catch (er) { html = ''; }
-    eclCache = { key: jd0, html }; return html;
+      out.sort((a, b) => a.jd - b.jd); eclList = out;
+      html = out.length ? `<div class="k" style="color:var(--ink3);margin-top:8px">Next eclipses <span class="est">estimate</span> · tap to jump</div>` + out.map(o => `<div class="tn" data-j="${o.jd}" role="button" tabindex="0"><b>${o.sol ? 'Solar' : 'Lunar'}</b><span>${E.jdToDate(o.jd).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })} · ${o.kind}</span></div>`).join('') : '<p class="vempty">No eclipse candidates in the next 760 days.</p>';
+    } catch (er) { html = '<p class="vempty">Could not work out the eclipses just now.</p>'; eclList = []; console.warn('Atlas eclipses', er); }
+    eclCache ={ key: jd0, html }; return html;
   }
   // Earth's seasons and apsides from the live orbit (Sun's ecliptic longitude crossings; perihelion by parabola fit)
   let evCache = { key: null, html: '' };
@@ -947,15 +995,24 @@ App.ui = (function () {
       for (let d = 1; d <= 400; d++) {
         const jd = jd0 + d, l = lonOf(jd), k = Math.floor(l / q);
         if (k !== pk) { const dl = ((l - pl + Math.PI * 3) % TP) - Math.PI; const tgt = (k * q) % TP, f = dl > 0 ? (((tgt - pl) + Math.PI * 3) % TP - Math.PI) / dl : 0; out.push({ jd: jd - 1 + Math.max(0, Math.min(1, f)), n: names[k] }); }
-        pk = k; pl = l; const r2 = rOf(jd + 1), a = rs[0], b = rs[1], c = rOf(jd) ; rs[0] = b; rs[1] = c;
+        pk = k; pl = l; const a = rs[0], b = rs[1], c = rOf(jd); rs[0] = b; rs[1] = c;
         if (d > 1 && b < a && b < c) { const den = a - 2 * b + c, off = den ? 0.5 * (a - c) / den : 0; out.push({ jd: jd - 1 + off, n: 'Perihelion · ' + (b * 1).toFixed(4) + ' AU' }); }
         else if (d > 1 && b > a && b > c) { const den = a - 2 * b + c, off = den ? 0.5 * (a - c) / den : 0; out.push({ jd: jd - 1 + off, n: 'Aphelion · ' + b.toFixed(4) + ' AU' }); }
-        void r2;
       }
-      out.sort((x, y) => x.jd - y.jd);
+      out.sort((x, y) => x.jd - y.jd); evList = out;
       html = out.length ? `<div class="k" style="color:var(--ink3);margin-top:8px">Earth's seasons &amp; apsides · tap to jump</div>` + out.slice(0, 4).map(o => `<div class="tn" data-j="${o.jd}" role="button" tabindex="0"><b>${o.n.split(' · ')[0]}</b><span>${E.jdToDate(o.jd).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}${o.n.includes(' · ') ? ' · ' + o.n.split(' · ')[1] : ''}</span></div>`).join('') : '';
-    } catch (er) { html = ''; }
+    } catch (er) { html = '<p class="vempty">Could not work out the seasons just now.</p>'; evList = []; console.warn('Atlas seasons', er); }
     evCache = { key: jd0, html }; return html;
+  }
+  // The next sky event on or after the Atlas date, across the four Tonight lists: { jd, label } or null
+  function nextEvent() {
+    oppositions(); conjunctions(); eclipses(); earthEvents();
+    const now = App.sim.jd, all = [];
+    oppList.forEach(o => all.push({ jd: o.jd, label: o.n + ' opposition' }));
+    cjList.forEach(o => all.push({ jd: o.jd, label: o.n + ' conjunction' }));
+    eclList.forEach(o => all.push({ jd: o.jd, label: (o.sol ? 'Solar' : 'Lunar') + ' eclipse · ' + o.kind }));
+    evList.forEach(o => all.push({ jd: o.jd, label: o.n.split(' · ')[0] }));
+    return all.filter(e => Number.isFinite(e.jd) && e.jd >= now - 0.5).sort((a, b) => a.jd - b.jd)[0] || null;
   }
   function tabs() { const dr = $('drawer'), st = dr.scrollTop; try { tabsInner(); } finally { dr.scrollTop = st; } }
   function tabsInner() {
@@ -963,7 +1020,7 @@ App.ui = (function () {
     if (S.tab === 'layers') {
       const forced = S.scale.dist === 'log';
       const rec = (S.recent || []).filter(n => ctx.bodies[n]);
-      body.innerHTML = (rec.length ? `<div class="k" style="color:var(--ink3)">Recently visited</div><div class="mgrp">${rec.map(n => `<span data-f="${n}" role="button" tabindex="0">${n}</span>`).join('')}</div>` : '') + `<div class="k" style="color:var(--ink3)">Sizes</div><div class="seg"><button data-s="size:true" class="${S.scale.size === 'true' && !forced ? 'on' : ''}">True scale</button><button data-s="size:visible" class="${S.scale.size === 'visible' || forced ? 'on' : ''}">Visible</button></div>
+      body.innerHTML = App.views.html() + (rec.length ?`<div class="k" style="color:var(--ink3)">Recently visited</div><div class="mgrp">${rec.map(n => `<span data-f="${n}" role="button" tabindex="0">${n}</span>`).join('')}</div>` : '') + `<div class="k" style="color:var(--ink3)">Sizes</div><div class="seg"><button data-s="size:true" class="${S.scale.size === 'true' && !forced ? 'on' : ''}">True scale</button><button data-s="size:visible" class="${S.scale.size === 'visible' || forced ? 'on' : ''}">Visible</button></div>
       <div class="k" style="color:var(--ink3)">Distances</div><div class="seg"><button data-s="dist:linear" class="${S.scale.dist === 'linear' ? 'on' : ''}">Linear</button><button data-s="dist:log" class="${S.scale.dist === 'log' ? 'on' : ''}">Logarithmic</button></div>
       ${forced ? '<p style="color:var(--ink3);margin:2px 0 6px">Log distances use visible sizes; pick Linear for true scale.</p>' : ''}
       ${LAYERS.map(([k, n]) => `<div class="lay"><span>${n}</span><button class="sw ${S.layers[k] ? 'on' : ''}" data-l="${k}" role="switch" aria-checked="${S.layers[k]}" aria-label="${n}"></button></div>`).join('')}
@@ -971,12 +1028,15 @@ App.ui = (function () {
       body.querySelectorAll('[data-s]').forEach(b => b.onclick = () => { const [k, v] = b.dataset.s.split(':'); App.actions.setScale(k, v); tabs(); });
       body.querySelectorAll('[data-l]').forEach(b => b.onclick = () => { App.actions.toggleLayer(b.dataset.l); tabs(); });
       body.querySelectorAll('[data-p]').forEach(b => b.onclick = () => { App.actions.setP9(b.dataset.p); tabs(); });
+      App.views.bind(body, tabs);
       body.querySelectorAll('[data-f]').forEach(b => { b.onclick = () => App.actions.focus(b.dataset.f); b.onkeydown = (e) => { if (e.key === 'Enter') App.actions.focus(b.dataset.f); }; });
     } else if (S.tab === 'tonight') {
       const names = ['Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto', 'Ceres'];
       const rows = names.map(n => ctx.bodies[n]).filter(Boolean).map(b => ({ b, s: skyNow(b), el: elong(b) }));
       const when = E.jdToDate(App.sim.jd).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-      body.innerHTML = `<p style="color:var(--ink2);margin:0 0 4px">Where each world sits in Earth's sky on ${when}${S.time.live ? ' (now)' : ''}, from these live positions. Naked-eye planets glow gold when well clear of the Sun. Tap to fly there.</p>` + bestBet(rows) + moonPhase() +
+      // one tap jumps time to the next event in the lists below (paused there, so it can be looked at)
+      const nx = nextEvent(), nxHtml = nx ? `<button class="nx" data-j="${nx.jd}" data-jl="${nx.label}" style="width:100%;text-align:left;margin:2px 0 6px;border-color:rgba(245,165,36,.4)">Next sky event ▸ <b>${nx.label}</b> · ${E.jdToDate(nx.jd).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</button>` : '';
+      body.innerHTML =`<p style="color:var(--ink2);margin:0 0 4px">Where each world sits in Earth's sky on ${when}${S.time.live ? ' (now)' : ''}, from these live positions. Naked-eye planets glow gold when well clear of the Sun. Tap to fly there.</p>` + nxHtml + bestBet(rows) + moonPhase() +
         rows.map(r => `<div class="tn ${r.el > 25 && ['Venus', 'Mars', 'Jupiter', 'Saturn', 'Mercury'].includes(r.b.name) ? 'up' : ''}" data-f="${r.b.name}" role="button" tabindex="0"><b>${r.b.name}</b><span>${r.s || '—'}${/^℞/.test(retro(r.b)) ? ' · ℞' : ''}</span></div>`).join('') +
         oppositions() + conjunctions() + eclipses() + earthEvents() + `<p style="color:var(--ink3);margin:6px 0 0">Elongation only: rise times depend on latitude (Philadelphia ≈40°N).</p>`;
       body.querySelectorAll('[data-f]').forEach(b => { b.onclick = () => App.actions.focus(b.dataset.f); b.onkeydown = (e) => { if (e.key === 'Enter') App.actions.focus(b.dataset.f); }; });
@@ -998,6 +1058,7 @@ App.ui = (function () {
       <p><b>Planet Nine</b> is <span class="est">HYPOTHETICAL</span>: Batygin & Brown (≈6 M⊕, i≈16°); two variants. Drawn at aphelion, where it would most likely be. Highlighted: the clustered eTNO orbits (Sedna, 2012 VP113, Leleākūhonua, Ammonite).</p>
       <p><b>Stars</b>: 39 bright stars at their catalogue RA/Dec/magnitude (Yale BSC) plus a <span class="est">representative</span> faint field and Milky Way band along the galactic plane.</p>
       <p><b>Lighting</b>: the Sun is the only light; moon shadows and eclipses are ray-tested against the Sun’s disc in the shader. Textures are procedural.</p>
+      <p><b>Keys</b>: Space pause · N now · R reverse · [ ] or + − speed (×4, ÷4) · , . one day back or forward · &lt; &gt; one month · y or Y one year forward or back · ← → previous or next body · 1–9 planets · T planet tour (T again stops it) · H or Esc the Sun · E Earth · / search · L labels · M moons · O orbits · C comets · B belts · K Kuiper · P Planet Nine · G stars · U heliosphere · V spacecraft · X Oort cloud · ? this list.</p>
       <p style="color:var(--ink3)">three.js patterns: CloudAI-X/threejs-skills.</p><p><b>Seasons and ring tilt</b>: subsolar latitude and Saturn's ring opening angle from the IAU poles and these live positions (~0.5°). <b>Surface features</b> placed at their real latitude/longitude (Great Red Spot, Jupiter's polar hazes and white ovals, Hellas, Tharsis volcanoes, Caloris, Saturn's hexagon) are hand-drawn approximations. <b>Phoebe ring</b>: Saturn's largest ring, ~59–300 Saturn radii, tilted with Saturn's orbit, very faint (shown brightened).</p></div>`;
     }
   }
@@ -1013,10 +1074,11 @@ App.ui = (function () {
     if (S.drawer) { $('drawer').hidden = false; $('btnDrawer').classList.add('on'); tabs(); }
     document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => { App.actions.setTab(b.dataset.tab); tabs(); });
     $('bRev').onclick = () => { if (S.time.live) App.actions.realtime(); App.actions.reverse(); };
-    $('tabBody').addEventListener('click', (ev) => { const j = ev.target.closest && ev.target.closest('[data-j]'); if (!j) return; try { S.time.paused = true; App.actions.jumpTo(E.jdToDate(+j.dataset.j)); toast('Jumped to the eclipse · paused'); refresh(); } catch (er) { toast(er.message); } });
+    $('tabBody').addEventListener('click', (ev) => { const j = ev.target.closest && ev.target.closest('[data-j]'); if (!j) return; try { S.time.paused = true; App.actions.jumpTo(E.jdToDate(+j.dataset.j)); toast('Jumped to ' + (j.dataset.jl || 'the event') + ' · paused', 2400); refresh(); } catch (er) { toast(er.message); } });
     $('search').title = 'Search (/) · Space pause · N now · R reverse · +/− speed · H Sun · L labels · Esc close';
     $('bPause').onclick = () => App.actions.togglePause(); $('cPlay').onclick = () => App.actions.togglePause();
     $('b1x').onclick = () => App.actions.realtime(); $('bNow').onclick = () => App.actions.now();
+    $('cardShow').onclick = () => { if (sel) select(sel); };
     $('speed').oninput = (e) => { const v = +e.target.value / 1000, r = Math.pow(10, v * LMAX) * (S.time.rate < 0 ? -1 : 1); App.actions.setRate(r); };
     $('jump').onchange = (e) => { try { App.actions.jumpTo(e.target.value); toast('Jumped to ' + e.target.value); } catch (er) { toast(er.message); } };
     document.addEventListener('keydown', (e) => {
@@ -1029,38 +1091,64 @@ App.ui = (function () {
       if ((m.p9 === 'brief' || m.p9 === 'bb2021') && m.p9 !== S.p9) { App.actions.setP9(m.p9); ch = true; }
       if (ch) { refresh(); if (!$('drawer').hidden) tabs(); } } catch (er) {} });
     refresh();
+    // first visit only: say where the keys are (the tip is remembered, so it never repeats)
+    let hinted = false; try { hinted = !!(window.cabinet && cabinet.recall && cabinet.recall('atlasHinted', false)); } catch (e) {}
+    if (!hinted) { try { cabinet.remember('atlasHinted', true); } catch (e) {} setTimeout(() => toast('Press ? for keys · 1–9 fly to planets', 4200), 1200); }
+    // the day's Moon line waits until the first key tip has had its time on screen
+    setTimeout(skyOfDay, hinted ? 1500 : 6000);
   }
   function refresh() {
     const t = S.time;
     $('bPause').textContent = t.paused ? '▶' : '⏸'; $('cPlay').textContent = t.paused ? '▶' : '⏸';
     $('bNow').classList.toggle('on', t.live); $('b1x').classList.toggle('on', !t.live && Math.abs(t.rate) === 1 && !t.paused); $('bRev').classList.toggle('on', t.rate < 0);
     $('speed').value = Math.round(Math.log10(Math.max(1, Math.abs(t.rate))) / LMAX * 1000);
+    // screen readers hear the state, not just the icon: the play button names its action, the slider says its speed
+    $('bPause').setAttribute('aria-label', t.paused ? 'Play' : 'Pause');
+    $('bNow').setAttribute('aria-pressed', t.live ? 'true' : 'false');
+    $('speed').setAttribute('aria-valuetext', (t.paused ? 'paused, ' : '') + fmtRate(t.rate));
   }
+  // Writes text only when it changed: tick runs every frame, and a live DOM write each frame costs layout for nothing
+  const setText = (el, s) => { if (el && el.textContent !== s) el.textContent = s; };
   function tick(fb, camDist, fov, H) {
-    const d = E.jdToDate(App.sim.jd), t = S.time;
-    const ds = d.toLocaleString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
-    $('date').textContent = ds; $('cDate').textContent = ds;
-    $('rateTxt').textContent = t.paused ? 'Paused' : t.live ? 'Live · now' : fmtRate(t.rate) + (App.clampInfo() ? ' · ⚠' : '');
-    $('rateTxt').title = App.clampInfo();
+    const t = S.time;
+    // the date string, the clamp warning and the time-dependent labels only change when the sim moves a minute: cache by minute
+    const dk = Math.floor(App.sim.jd * 1440);
+    if (tick.dk !== dk) {
+      tick.dk = dk; tick.ds = E.jdToDate(App.sim.jd).toLocaleString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+      tick.warn = App.clampInfo();
+    }
+    const ds = tick.ds;
+    setText($('date'), ds); setText($('cDate'), ds);
+    setText($('rateTxt'), t.paused ? 'Paused' : t.live ? 'Live · now' : fmtRate(t.rate) + (tick.warn ? ' · ⚠' : ''));
+    $('rateTxt').title = tick.warn;
     const off = Math.abs(App.sim.jd - E.jdNow()); let pill = $('nowPill');
     if (!pill) { pill = document.createElement('button'); pill.id = 'nowPill'; pill.onclick = () => { App.actions.now(); toast('Back to now'); }; document.body.appendChild(pill); }
     pill.hidden = t.live || off < 1;
-    if (!pill.hidden) pill.textContent = (off > 730 ? Math.round(off / 365.25) + ' years ' : off > 60 ? Math.round(off / 30.44) + ' months ' : Math.round(off) + ' days ') + (App.sim.jd > E.jdNow() ? 'ahead' : 'ago') + ' · Back to now';
-    const e = ctx.bodies.Earth; $('cEarth').textContent = 'Earth ' + Math.hypot(...e.h).toFixed(3) + ' AU from Sun' + (t.live ? ' · now' : '');
-    const sc = $('scale'); sc.style.display = 'block';
+    if (!pill.hidden) setText(pill, (off > 730 ? Math.round(off / 365.25) + ' years ' : off > 60 ? Math.round(off / 30.44) + ' months ' : Math.round(off) + ' days ') + (App.sim.jd > E.jdNow() ? 'ahead' : 'ago') + ' · Back to now');
+    const e = ctx.bodies.Earth; setText($('cEarth'), 'Earth ' + Math.hypot(...e.h).toFixed(3) + ' AU from Sun' + (t.live ? ' · now' : ''));
+    const sc = $('scale'); if (sc.style.display !== 'block') sc.style.display = 'block';
     if (S.scale.dist === 'linear') {
       const unitsPx = 2 * camDist * Math.tan(fov * Math.PI / 360) / H, auBar = unitsPx * 80 / 100;
-      $('scaleTxt').textContent = auBar < 0.01 ? Math.round(auBar * E.AU_KM).toLocaleString() + ' km' : auBar > 60000 ? (auBar / 63241).toFixed(2) + ' ly' : au(auBar);
-      $('ltTxt').textContent = 'Bar = ' + E.lightTime(auBar);
+      setText($('scaleTxt'), auBar < 0.01 ? Math.round(auBar * E.AU_KM).toLocaleString() + ' km' : auBar > 60000 ? (auBar / 63241).toFixed(2) + ' ly' : au(auBar));
+      setText($('ltTxt'), 'Bar = ' + E.lightTime(auBar));
       $('scaleBar').style.display = '';
-    } else { $('scaleBar').style.display = 'none'; $('scaleTxt').textContent = 'Log distance scale'; $('ltTxt').textContent = fb.name === 'Sun' ? '' : fb.name + ': ' + E.lightTime(Math.hypot(...fb.h)) + ' from Sun'; }
+    } else { $('scaleBar').style.display = 'none'; setText($('scaleTxt'), 'Log distance scale'); setText($('ltTxt'), fb.name === 'Sun' ? '' : fb.name + ': ' + E.lightTime(Math.hypot(...fb.h)) + ' from Sun'); }
     if (sel && !$('card').hidden) card();
-    if (S.tab === 'tonight' && !$('drawer').hidden && (tick.n = (tick.n || 0) + 1) % 8 === 0) tabs();
+    // a closed card leaves a "Info · body" chip to bring it back (the only other way was tapping a body again)
+    const show = $('cardShow'); if (show) { const lbl = sel ? 'Info · ' + sel.name : ''; show.hidden = !sel || S.card; if (show.textContent !== lbl) show.textContent = lbl; }
+    // Tonight's lists redraw only when what they show changes: each minute at normal speed, each day while time runs past 30 days a second.
+    // A rebuild on every frame would drop keyboard focus and could swallow a tap in progress.
+    if (S.tab === 'tonight' && !$('drawer').hidden) {
+      const fastTime = Math.abs(S.time.rate) > 30, tk = fastTime ? Math.floor(App.sim.jd) : dk;
+      if (tk !== tick.tk) { tick.tk = tk; tabs(); }
+    }
   }
   let toastT = 0;
-  function toast(msg) { let el = $('toast'); if (!el) { el = document.createElement('div'); el.id = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); } el.textContent = msg; el.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 1400); }
+  function toast(msg, ms) { let el = $('toast'); if (!el) { el = document.createElement('div'); el.id = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); } el.textContent = msg; el.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), ms || 1400); }
   function select(b, quiet) { sel = b; if (!quiet) { App.actions.setCard(true); card(); } else if (S.card) card(); }
-  return { init, refresh, tick, select, info, tabs };
+  // opens the drawer on one of its tabs (the ? key opens About, where the keys are listed in full)
+  function showTab(t) { $('drawer').hidden = false; $('btnDrawer').classList.add('on'); App.actions.setDrawer(true); App.actions.setTab(t); tabs(); }
+  return { init, refresh, tick, select, info, tabs, toast, nextEvent, showTab };
 })();
 
 // Actions: usable from chat, voice and other thinklets
@@ -1074,20 +1162,15 @@ App.ui = (function () {
       (a) => { const b = find(a.name); if (!b) throw new Error('No body called ' + a.name); A.focus(b.name); return { message: 'Following ' + b.name }; });
     cabinet.actions.define('setTime', { description: 'Set the time: a date (YYYY-MM-DD), "now", or a speed in seconds per second (negative reverses)', input: { type: 'object', properties: { date: { type: 'string' }, rate: { type: 'number' } } } },
       (a) => { if (a.date === 'now' || (!a.date && a.rate == null)) { A.now(); return { message: 'Back to now' }; } if (a.date) A.jumpTo(a.date); if (a.rate != null) A.setRate(a.rate); return { message: 'Time set' + (a.date ? ' to ' + a.date : '') }; });
-    cabinet.actions.define('toggleLayer', { description: 'Show or hide a layer: orbits, labels, moons, belts, kuiper, oort, helio, p9, craft, comets, stars, milky', input: { type: 'object', properties: { layer: { type: 'string' }, on: { type: 'boolean' } }, required: ['layer'] } },
-      (a) => { const v = A.toggleLayer(a.layer, a.on); return { message: a.layer + (v ? ' shown' : ' hidden') }; });
-    cabinet.actions.define('whereIs', { description: 'Where a body is right now: distance from the Sun and Earth, and light-time', readOnly: true, input: { type: 'object', properties: { name: { type: 'string' } }, required: ['name'] } },
-      (a) => { const b = find(a.name); if (!b || !App.ui.info || !b.h) throw new Error('No body called ' + a.name);
-        const i = App.ui.info(b); return { message: `${b.name}: ${i.rSunAU.toFixed(3)} AU from the Sun, ${i.rEarthAU.toFixed(3)} AU from Earth (${i.lightFromEarth}).`, ...i }; });
-    cabinet.describeMemory && cabinet.describeMemory({ atlas: 'settings { v:1, time:{live,jd,rate,paused}, camera:{focus,dist,az,el}, layers:{orbits,labels,moons,belts,kuiper,oort,helio,p9,craft,comets,stars,milky}, moonFilter:{Jupiter:false…}, scale:{size:"true"|"visible", dist:"linear"|"log"}, p9:"brief"|"bb2021", tab }' });
-    cabinet.onMemory && cabinet.onMemory(() => {});
+    // toggleLayer, whereIs, describeMemory and the memory listener are defined once, in the module below (one owner per action name)
   } catch (e) { console.warn(e); }
 })();
 
 </script>
-<script>(function(){var done=false;addEventListener('unhandledrejection',function(){setTimeout(function(){var l=document.getElementById('loading');if(l)l.style.display='none'},4000)});addEventListener('error',function(){setTimeout(function(){var l=document.getElementById('loading');if(l&&!done)l.style.display='none'},4000)});addEventListener('keydown',function(e){var t=e.target&&e.target.tagName;if(t==='INPUT'||t==='TEXTAREA'||e.metaKey||e.ctrlKey||!App.actions)return;if(e.key.length===1&&' nNrRlLoOmMhHbBcCpPkK/[]'.indexOf(e.key)>=0)return;try{var r=App.state.time.rate||1;if(e.key==='['){App.actions.setRate(r/2);done=true}else if(e.key===']'){App.actions.setRate(r*2)}else if(e.key==='\\'){App.actions.reverse()}else if(e.key===' '){e.preventDefault();App.actions.togglePause()}else if(e.key==='n'||e.key==='N'){App.actions.now()}else if(e.key==='r'||e.key==='R'){App.actions.realtime()}else if(e.key==='l'||e.key==='L'){App.actions.toggleLayer('labels')}else if(e.key==='o'||e.key==='O'){App.actions.toggleLayer('orbits')}else if(e.key==='m'||e.key==='M'){App.actions.toggleLayer('moons')}else if(e.key==='h'||e.key==='H'){App.actions.focus('Sun')}else if(e.key==='e'||e.key==='E'){App.actions.focus('Earth')}else if(e.key==='b'||e.key==='B'){App.actions.toggleLayer('belts')}else if(e.key==='c'||e.key==='C'){App.actions.toggleLayer('comets')}else if(e.key==='p'||e.key==='P'){App.actions.toggleLayer('p9')}else if(e.key==='k'||e.key==='K'){App.actions.toggleLayer('kuiper')}else if(e.key==='x'||e.key==='X'){App.actions.toggleLayer('oort')}else if(e.key==='u'||e.key==='U'){App.actions.toggleLayer('helio')}else if(e.key==='v'||e.key==='V'){App.actions.toggleLayer('craft')}else if(e.key==='.'||e.key===','||e.key==='y'||e.key==='Y'){var s=(e.key==='.'?1:e.key===','?-1:e.key==='y'?365.25:-365.25);App.state.time.paused=true;App.state.time.live=false;App.actions.jumpTo(App.E.jdToDate(App.sim.jd+s));var tt=document.getElementById('toast');if(tt){tt.textContent=(s>0?'+':'−')+(Math.abs(s)>1?'1 year':'1 day');tt.classList.add('show');setTimeout(function(){tt.classList.remove('show')},900)}}else if(e.key==='g'||e.key==='G'){App.actions.toggleLayer('stars')}else if(e.key==='/'){e.preventDefault();var si=document.getElementById('search');if(si){si.focus();si.select()}}else if(e.key==='Escape'){var cd=document.getElementById('card');if(cd)cd.hidden=true;var dr=document.getElementById('drawer');if(dr){dr.hidden=true;App.actions.setDrawer(false)}}}catch(x){}})})()</script>
+<script>(function(){var done=false;addEventListener('unhandledrejection',function(){setTimeout(function(){var l=document.getElementById('loading');if(l)l.style.display='none'},4000)});addEventListener('error',function(){setTimeout(function(){var l=document.getElementById('loading');if(l&&!done)l.style.display='none'},4000)});addEventListener('keydown',function(e){var t=e.target&&e.target.tagName;if(t==='INPUT'||t==='TEXTAREA'||e.metaKey||e.ctrlKey||!App.actions)return;if(e.key.length===1&&' nNrRlLoOmMhHbBcCpPkK/[]'.indexOf(e.key)>=0)return;try{var r=App.state.time.rate||1;if(e.key==='['){App.actions.setRate(r/2);done=true}else if(e.key===']'){App.actions.setRate(r*2)}else if(e.key==='\\'){App.actions.reverse()}else if(e.key===' '){e.preventDefault();App.actions.togglePause()}else if(e.key==='n'||e.key==='N'){App.actions.now()}else if(e.key==='r'||e.key==='R'){App.actions.realtime()}else if(e.key==='l'||e.key==='L'){App.actions.toggleLayer('labels')}else if(e.key==='o'||e.key==='O'){App.actions.toggleLayer('orbits')}else if(e.key==='m'||e.key==='M'){App.actions.toggleLayer('moons')}else if(e.key==='h'||e.key==='H'){App.actions.focus('Sun')}else if(e.key==='e'||e.key==='E'){App.actions.focus('Earth')}else if(e.key==='b'||e.key==='B'){App.actions.toggleLayer('belts')}else if(e.key==='c'||e.key==='C'){App.actions.toggleLayer('comets')}else if(e.key==='p'||e.key==='P'){App.actions.toggleLayer('p9')}else if(e.key==='k'||e.key==='K'){App.actions.toggleLayer('kuiper')}else if(e.key==='x'||e.key==='X'){App.actions.toggleLayer('oort')}else if(e.key==='u'||e.key==='U'){App.actions.toggleLayer('helio')}else if(e.key==='v'||e.key==='V'){App.actions.toggleLayer('craft')}else if(e.key==='y'||e.key==='Y'){var s=(e.key==='y'?365.25:-365.25);App.state.time.paused=true;App.state.time.live=false;App.actions.jumpTo(App.E.jdToDate(App.sim.jd+s));var tt=document.getElementById('toast');if(tt){tt.textContent=(s>0?'+':'−')+(Math.abs(s)>1?'1 year':'1 day');tt.classList.add('show');setTimeout(function(){tt.classList.remove('show')},900)}}else if(e.key==='g'||e.key==='G'){App.actions.toggleLayer('stars')}else if(e.key==='/'){e.preventDefault();var si=document.getElementById('search');if(si){si.focus();si.select()}}else if(e.key==='Escape'){var cd=document.getElementById('card');if(cd)cd.hidden=true;var dr=document.getElementById('drawer');if(dr){dr.hidden=true;App.actions.setDrawer(false)}}}catch(x){}})})()</script>
 <script src="js/ship.js"></script>
 <script src="js/ufo.js"></script>
+<script src="js/views.js"></script>
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -1104,7 +1187,6 @@ catch (e) { const l = document.getElementById('loading'); if (l) l.textContent =
 let glLost = false;
 canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); glLost = true; });
 canvas.addEventListener('webglcontextrestored', () => { glLost = false; });
-document.addEventListener('visibilitychange', () => { if (document.hidden) { try { S.time.jd = App.sim.jd; cabinet.remember('atlas', S); } catch (e) {} } });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.0;
@@ -1391,16 +1473,21 @@ function layerOn(b) {
   if (b.kind === 'craft' || b.kind === 'probe' || b.kind === 'lagrange') return L.craft; if (b.kind === 'hyp') return L.p9; if (b.kind === 'comet') return L.comets;
   return true;
 }
-let frameErr = 0;
+let frameErr = 0, looping = false;
+// Stops scheduling frames while the thinklet is folded or hidden (no work at all), and starts again when it is shown
 function frame() {
+  if (window.cabinet && cabinet.visible === false) { looping = false; clock.getDelta(); return; }
   requestAnimationFrame(frame);
   try { frameBody(); } catch (e) { if (frameErr++ < 3) console.warn('Atlas frame', e); }
 }
+function startLoop() { if (looping) return; looping = true; requestAnimationFrame(frame); }
+// Calm motion: the Sun's granulation and corona stop drifting when Chris asked for less motion
+const calm = !!(window.cabinet && cabinet.reducedMotion === true) || (!!window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
 function frameBody() {
   if (window.cabinet && cabinet.visible === false) { clock.getDelta(); return; }
   if (!W || !H) { resize(); return; }
   if (glLost) return;
-  const dt = Math.min(clock.getDelta(), 0.1); t += dt;
+  const dt = Math.min(clock.getDelta(), 0.1); if (!calm) t += dt;
   const ts_ = S.time;
   if (ts_.live && !ts_.paused) App.sim.jd = E.jdNow();
   else if (!ts_.paused) App.sim.jd = Math.max(2086302.5, Math.min(2817152.5, App.sim.jd + dt * ts_.rate / 86400));
@@ -1449,13 +1536,13 @@ function frameBody() {
     show = show && S.layers.labels;
     if (show) cand.push(b); else b.lb.style.display = 'none';
   }
-  // label declutter: priority order, skip overlapping boxes
-  const PRI = { star: 0, planet: 1, dwarf: 2, craft: 3, comet: 4, etno: 4, minor: 4, hyp: 3, moon: 5, lagrange: 6, probe: 4 };
+  // label declutter: priority order, skip overlapping boxes (widths are measured, so a long name never runs off the card)
+  const PRI ={ star: 0, planet: 1, dwarf: 2, craft: 3, comet: 4, etno: 4, minor: 4, hyp: 3, moon: 5, lagrange: 6, probe: 4 };
   const cardEl = document.getElementById('card'), cr = cardEl && !cardEl.hidden ? cardEl.getBoundingClientRect() : null;
   cand.sort((x, y) => (x === fb ? -1 : y === fb ? 1 : (PRI[x.kind] - PRI[y.kind]) || (y.R - x.R)));
   const placed = [];
   for (const b of cand) {
-    const w = 10 + b.name.length * 6.2, x0 = b.sx, y0 = b.sy - 8, x1 = x0 + w, y1 = y0 + 14;
+    const w = labelW(b.lb, W), x0 = b.sx, y0 = b.sy - 8, x1 = x0 + w, y1 = y0 + 14;
     if (b !== fb && placed.some(r => x0 < r[2] && x1 > r[0] && y0 < r[3] && y1 > r[1])) { b.lb.style.display = 'none'; continue; }
     if (b !== fb && (x1 > W - 4 || x0 < 2 || (x1 > W - 190 && y0 < 48) || y1 > H - 70 || (cr && cr.width && x0 < cr.right && x1 > cr.left && y0 < cr.bottom && y1 > cr.top))) { b.lb.style.display = 'none'; continue; }
     placed.push([x0, y0, x1, y1]); if (b.lb.style.display) b.lb.style.display = '';
@@ -1488,11 +1575,24 @@ function frameBody() {
     if (g === 'etno') l.material.color.setHex(S.layers.p9 ? 0xff5f8f : 0xd0607f); });
   moonOrbits.forEach(l => { const m = l.userData.moon, p = bodies[m.parent]; l.visible = S.layers.orbits && layerOn(m) && App.ufo.lineOn('moon') && camera.position.distanceTo(p.grp.position) < visR(p) * 200; });
   regions.forEach(r => { scr.copy(r.sp).sub(F).project(camera); const sx = (scr.x * .5 + .5) * W, sy = (-scr.y * .5 + .5) * H;
-    const rw = r.lb.textContent.length * 5.6 + 8; let show = S.layers.labels && S.layers[r.layer] && scr.z < 1 && sx > 0 && sx < W - 10 - rw && sy > 50 && sy < H - 90 && !(sx > W - 230 && sy < 90);
+    const rw = labelW(r.lb, W); let show = S.layers.labels && S.layers[r.layer] && scr.z < 1 && sx > 0 && sx < W - 10 - rw && sy > 50 && sy < H - 90 && !(sx > W - 230 && sy < 90);
     if (show && placed.some(q => sx < q[2] && sx + rw > q[0] && sy - 2 < q[3] && sy + 14 > q[1])) show = false; if (show) placed.push([sx, sy - 2, sx + rw, sy + 14]); r.lb.style.display = show ? '' : 'none'; if (show) r.lb.style.transform = `translate(${sx.toFixed(0)}px,${sy.toFixed(0)}px)`; });
   sky.grp.position.copy(camera.position); sky.grp.visible = S.layers.stars; sky.milky.visible = S.layers.milky;
   renderer.render(scene, camera);
   uiT += dt; if (uiT > 0.25) { uiT = 0; App.ui.tick(fb, camera.position.length(), camera.fov, H); }
+}
+
+// The width of a label's box: its text measured in the font CSS gives it, plus the padding (9px left, 4px right).
+// Measured once per view size (the font steps down on small cards), so the declutter never guesses and a long name
+// like Makemake stays inside the card.
+const labelMeasure = document.createElement('canvas').getContext('2d');
+function labelW(lb, W) {
+  if (lb._lw == null || lb._lwW !== W) {
+    const cs = getComputedStyle(lb);
+    labelMeasure.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    lb._lw = Math.ceil(labelMeasure.measureText(lb.textContent).width) + 13; lb._lwW = W;
+  }
+  return lb._lw;
 }
 
 // ---------- UFO mode (js/ufo.js) ----------
@@ -1504,7 +1604,8 @@ buildEnv(); computePositions(App.sim.jd); buildOrbits(App.sim.jd); App.Belts.upd
 App.ui.init({ bodies, list, trueMode, visR, logF });
 App.ui.select(focusBody(), true);
 document.getElementById('loading').remove();
-requestAnimationFrame(frame);
+startLoop();
+if (window.cabinet && cabinet.onVisibility) cabinet.onVisibility((vis) => { if (vis) startLoop(); });
 try { if (window.cabinet && cabinet.actions && cabinet.actions.define) { cabinet.actions.define('distanceBetween', { description: 'How far apart two bodies are at the Atlas date (e.g. Earth and Mars), with light-travel time', readOnly: true,
   input: { type: 'object', properties: { from: { type: 'string' }, to: { type: 'string' } }, required: ['from', 'to'] } }, (a) => {
   const find = (n) => bodies[Object.keys(bodies).find(k => k.toLowerCase() === String(n || '').trim().toLowerCase())];
@@ -1531,6 +1632,10 @@ try { if (window.cabinet && cabinet.actions && cabinet.actions.define) { cabinet
   cabinet.actions.define('toggleLayer', { description: 'Show or hide an Atlas layer: orbits, labels, moons, belts, kuiper, oort, helio, p9, craft, comets, stars, milky', input: { type: 'object', properties: { layer: { type: 'string' }, on: { type: 'boolean' } }, required: ['layer'] } }, (a) => {
     const k = String(a.layer || '').trim().toLowerCase().replace('planet nine', 'p9').replace('heliosphere', 'helio').replace('spacecraft', 'craft').replace('milky way', 'milky');
     const v = App.actions.toggleLayer(k, typeof a.on === 'boolean' ? a.on : undefined); return { message: k + (v ? ' shown.' : ' hidden.'), on: v }; });
+  cabinet.actions.define('planetTour', { description: 'Start or stop the planet tour: flies from Mercury out to Pluto, one planet every 5 seconds', input: { type: 'object', properties: { stop: { type: 'boolean' } } } }, (a) => {
+    if (a && a.stop === true) { App.tour.stop(); return { message: 'Tour stopped.', running: false }; }
+    if (App.tour.running()) return { message: 'The tour is already running.', running: true };
+    App.tour.toggle(); return { message: 'Touring the planets, Mercury first.', running: true }; });
   cabinet.actions.define('setSpeed', { description: 'Set Atlas time speed in days per second (negative runs backward, max 365)', input: { type: 'object', properties: { daysPerSecond: { type: 'number' } }, required: ['daysPerSecond'] } }, (a) => {
     const d = Number(a.daysPerSecond); if (!Number.isFinite(d)) throw new Error('That speed could not be read.'); App.actions.setRate(d * 86400); return { message: 'Speed set to ' + (S.time.rate / 86400).toFixed(2) + ' days/s.' }; });
 } } catch (e) { console.warn(e); }
@@ -1547,7 +1652,8 @@ addEventListener('keydown', (e) => {
     else if (k === 'ArrowRight' || k === 'ArrowLeft') { const seq = ['Sun', ...D.planets.map(p => p.name), 'Pluto']; let i = seq.indexOf(S.camera.focus); i = (i < 0 ? 0 : i + (k === 'ArrowRight' ? 1 : seq.length - 1)) % seq.length; App.actions.focus(seq[i]); msg = 'Following ' + seq[i]; }
     else if (k === 'Escape' && S.camera.focus !== 'Sun') { App.actions.focus('Sun'); msg = 'Back to the Sun'; }
     else if (k === 'h' || k === 'H') { App.actions.focus('Sun'); msg = 'Back to the Sun'; }
-    else if (k === '?') { msg = 'Space pause · N now · R reverse · [ ] speed · ← → or 1–9 planets · H/Esc Sun · L labels · M moons · O orbits · C comets · B belts · K Kuiper · P Planet Nine · / search'; }
+    else if ((k === 't' || k === 'T') && !(App.ufo && App.ufo.active && App.ufo.active())) { msg = App.tour.toggle(); }
+    else if (k === '?') { App.ui.showTab('about'); msg = 'All keys are listed in About, below'; }
     else if (/^[1-9]$/.test(k)) { const n = [...D.planets.map(p => p.name), 'Pluto'][+k - 1]; App.actions.focus(n); msg = 'Following ' + n; }
     else if (k === 'm' || k === 'M') { msg = 'Moons ' + (App.actions.toggleLayer('moons') ? 'on' : 'off'); }
     else if (k === 'o' || k === 'O') { msg = 'Orbits ' + (App.actions.toggleLayer('orbits') ? 'on' : 'off'); }
@@ -1557,10 +1663,36 @@ addEventListener('keydown', (e) => {
     else if (k === 'k' || k === 'K') { msg = 'Kuiper belt ' + (App.actions.toggleLayer('kuiper') ? 'on' : 'off'); }
     else if (k === 'l' || k === 'L') { msg = 'Labels ' + (App.actions.toggleLayer('labels') ? 'on' : 'off'); }
     else if (k === ']' || k === '[') { App.actions.setRate(S.time.rate * (k === ']' ? 4 : 0.25)); msg = (S.time.rate / 86400).toFixed(3) + ' days/s'; }
+    // , and . step a day back and forward; < and > (Shift) step a month. Stepping pauses, so the date holds still
+    else if (k === ',' || k === '.' || k === '<' || k === '>') { const unit = (k === ',' || k === '.') ? 'day' : 'month', n = (k === ',' || k === '<') ? -1 : 1;
+      App.actions.step(n, unit); msg = 'Stepped to ' + App.E.jdToDate(App.sim.jd).toISOString().slice(0, 10) + ' · paused'; }
     else return;
   } catch (er) { msg = er.message; }
   e.preventDefault(); if (msg) hint(msg);
 });
+// The planet tour (T): follows each planet from Mercury out to Pluto, one every 5 seconds, then stops. Any other move
+// (a key, a tap, a search, the Sun) stops it too, and so does hiding the page, so no timer runs in the background.
+App.tour = (function () {
+  const HOLD = 5000;
+  let timer = 0, step = -1, moving = false;
+  const stops = () => [...D.planets.map(p => p.name), 'Pluto'];
+  function stop() { clearTimeout(timer); timer = 0; step = -1; }
+  function go() {
+    const list = stops(); step++;
+    if (step >= list.length) { stop(); hint('Tour done · back to the Sun'); moving = true; App.actions.focus('Sun'); moving = false; return; }
+    try { moving = true; App.actions.focus(list[step]); } catch (e) { stop(); hint(e.message); return; } finally { moving = false; }
+    hint(`Tour ${step + 1} of ${list.length}: ${list[step]} · T or Esc stops`);
+    timer = setTimeout(go, HOLD);
+  }
+  // Starts the tour (go() shows its own first line), or stops it when it is running; returns the line to show, if any
+  function toggle() {
+    if (timer) { stop(); return 'Tour stopped'; }
+    go(); return '';
+  }
+  App.on((what) => { if (what === 'focus' && !moving && timer) stop(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  return { toggle, stop, running: () => !!timer };
+})();
 try { if (window.cabinet && cabinet.actions && cabinet.actions.define) cabinet.actions.define('listMoons', { description: 'List the moons the Atlas has for a planet or dwarf planet, largest first', readOnly: true,
   input: { type: 'object', properties: { parent: { type: 'string' } }, required: ['parent'] } }, (a) => {
   const p = Object.keys(bodies).find(k => k.toLowerCase() === String(a.parent || '').trim().toLowerCase()); if (!p) throw new Error('I could not find ' + a.parent + ' in the Atlas.');
@@ -1568,12 +1700,21 @@ try { if (window.cabinet && cabinet.actions && cabinet.actions.define) cabinet.a
   const known = bodies[p].moons;
   return { message: ms.length ? `${p}: ${ms.length} moons in the Atlas${known > ms.length ? ' (of ' + known + ' known)' : ''}. Largest: ${ms.slice(0, 6).map(m => m.name).join(', ')}.` : `${p} has no moons in the Atlas.`, count: ms.length, known, names: ms.map(m => m.name) };
 }); } catch (e) { console.warn(e); }
+try { if (window.cabinet && cabinet.actions && cabinet.actions.define) cabinet.actions.define('nextEvent', { description: 'The next sky event after the Atlas date (planet oppositions and conjunctions, eclipses, Earth seasons and perihelion) with its date; jump: true also moves the Atlas there, paused', input: { type: 'object', properties: { jump: { type: 'boolean' } } } }, (a) => {
+  const nx = App.ui.nextEvent(); if (!nx) return { message: 'No sky event found soon.', found: false };
+  const date = E.jdToDate(nx.jd).toISOString().slice(0, 10), days = Math.round(nx.jd - App.sim.jd), jump = !!(a && a.jump);
+  if (jump) { S.time.paused = true; App.actions.jumpTo(E.jdToDate(nx.jd)); }
+  return { message: `${nx.label} on ${date}${days > 0 ? ', in ' + days + ' days' : ''}${jump ? ' · Atlas set there, paused' : ''}.`, found: true, label: nx.label, date, days }; });
+} catch (e) { console.warn(e); }
 try { if (window.cabinet) {
-  if (cabinet.describeMemory) cabinet.describeMemory({ atlas: 'Atlas settings { v:1, time:{live,jd,rate (sim s per s),paused}, camera:{focus,dist,az,el}, layers:{name:bool}, moonFilter:{parent:false}, scale:{size:visible|true,dist:log|linear}, p9:brief|bb2021, tab, card, cardMini, recent:[names], scans:[names, newest first, up to 5, logged by UFO scans], ufo:{au:[x,y,z] heliocentric AU where the UFO was parked, at:ms} or null }' });
+  if (cabinet.describeMemory) cabinet.describeMemory({ atlas: 'Atlas settings { v:1, time:{live,jd,rate (sim s per s),paused}, camera:{focus,dist,az,el}, layers:{name:bool}, moonFilter:{parent:false}, scale:{size:visible|true,dist:log|linear}, p9:brief|bb2021, tab, card, cardMini, recent:[names], scans:[names, newest first, up to 5, logged by UFO scans], ufo:{au:[x,y,z] heliocentric AU where the UFO was parked, at:ms} or null }',
+    atlasHinted: 'true once the first-visit key tip has been shown',
+    skyDay: 'local date (YYYY-MM-DD) the daily Moon line was last shown on a live view',
+    views: 'saved views { v:1, list:[{ id, name, at (ms), focus (body name), jd (Atlas date, null = live), layers:{name:bool}, size:visible|true, dist:log|linear }] }, newest first, up to 6' });
+  // memory changes from elsewhere (chat, another copy): layers and focus follow; the state save and pagehide flush live in App.save above
   if (cabinet.onMemory) cabinet.onMemory((m) => { const a = m && m.atlas; if (!a || typeof a !== 'object') return;
     if (a.layers) for (const k in S.layers) if (typeof a.layers[k] === 'boolean' && a.layers[k] !== S.layers[k]) App.actions.toggleLayer(k, a.layers[k]);
     if (a.camera && typeof a.camera.focus === 'string' && a.camera.focus !== S.camera.focus && bodies[a.camera.focus]) App.actions.focus(a.camera.focus); });
-  addEventListener('pagehide', () => { try { S.time.jd = App.sim.jd; cabinet.remember('atlas', S); } catch (e) {} });
 } } catch (e) { console.warn(e); }
 
 </script>
