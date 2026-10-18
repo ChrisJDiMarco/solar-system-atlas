@@ -1,27 +1,30 @@
-# Solar System Atlas
+# 🪐 Solar System Atlas
 
-A live, interactive three.js model of the whole Solar System, from the Sun's surface out to the edge of the Oort Cloud (~100,000 AU). Every planet sits where it really is right now.
+**A live, interactive 3D model of the whole Solar System, with every planet where it really is right now.**
 
-Built as a Thinklet (a small AI-built app) and exported as a plain static web page.
+Fly from the Sun's surface out to the edge of the Oort Cloud (~100,000 AU), watch the planets, moons and comets move on their real orbits, jump to any date from 1000 to 3000 AD, or take the controls of a UFO and scan the system yourself.
 
-## Features
+Built with [three.js](https://threejs.org) and real orbital data from [NASA JPL](https://ssd.jpl.nasa.gov/planets/approx_pos.html).
 
-- **Real, live positions.** Planets use JPL's approximate Keplerian elements with secular rates (Standish), solved with Kepler's equation every frame. Comets and small bodies use their published orbital elements (hyperbolic paths too, like 3I/ATLAS). Earth's Moon uses Meeus mean elements.
-- **Time control.** Pause, real time, reverse, speed up to 1 year per second, jump to any date from 1000 to 3000 AD, and back to now. (Planet accuracy is best between 1800 and 2050.)
-- **The Sun and 8 planets** with real radii, axial tilts, rotation and orbit geometry, procedural shader surfaces, Earth's clouds, night lights and aurora, live seasons, and Saturn's rings with the Cassini division and its true ring tilt. Faint rings of Jupiter, Uranus and Neptune, plus Saturn's E and Phoebe rings.
-- **Moons** grouped and filterable by planet, tidally locked where they should be.
-- **Dwarf planets and TNOs:** Ceres, Pluto, Haumea, Makemake, Eris, Sedna, Quaoar, Orcus, Gonggong-class objects, 2012 VP113, Leleākūhonua and more.
-- **Small-body populations:** main belt with Kirkwood gaps, Hildas, Hungarias, Jupiter, Mars and Neptune Trojans, near-Earth sample, Centaurs, zodiacal dust, Kuiper belt (classical, plutinos, scattered disk).
-- **Notable asteroids and comets:** Apophis, Bennu, Psyche, Vesta, 2024 YR4, Halley, Hale-Bopp, Encke and others, with dust and ion tails pointing away from the Sun.
-- **Heliosphere and spacecraft:** termination shock and heliopause bubble, Voyager 1 and 2, Pioneer 10 and 11.
-- **Oort Cloud:** inner Hills cloud and outer shell.
-- **Planet Nine (HYPOTHETICAL):** a dashed orbit from the Batygin–Brown estimate, clearly marked as unconfirmed.
-- **Sky:** bright stars placed by RA/Dec and magnitude, plus the Milky Way band.
-- Lagrange point markers, a solar-system barycentre, a Tonight tab, search, layer toggles, true or visible size scale, and log or linear distance.
+---
 
-## Run it
+## ✨ What's inside
 
-It's a static site with no build step. Because `main.js` is an ES module, open it through a local server rather than double-clicking `index.html`:
+- **Real, live positions.** Planets are solved every frame from JPL's approximate Keplerian elements (Standish, with secular rates) using Kepler's equation. Comets, including hyperbolic paths, use their published elements. Earth's Moon uses Meeus mean elements.
+- **Time machine.** Pause, real time, reverse, speed up to a year per second, jump to any date, or snap back to *now*.
+- **The Sun and 8 planets.** Real radii, axial tilts, rotation and orbit geometry, procedural shader surfaces, Earth's clouds, night lights and aurora, live seasons, and Saturn's rings with the Cassini division.
+- **Moons** of every planet, grouped and filterable.
+- **Dwarf planets and TNOs.** Ceres, Pluto, Haumea, Makemake, Eris, Sedna, Quaoar, Orcus, 2012 VP113 and more.
+- **Small bodies.** The main asteroid belt with Kirkwood gaps, Trojans, Hildas, Centaurs and the Kuiper Belt (classical, plutinos and scattered disk).
+- **Famous rocks and comets.** Apophis, Bennu, Psyche, Vesta, 2024 YR4, Halley, Hale-Bopp and Encke. The comets grow tails that point away from the Sun.
+- **The edge of the map.** The termination shock and heliopause bubble, Voyager 1 and 2, Pioneer 10 and 11, and the Oort Cloud.
+- **Planet Nine (hypothetical).** A dashed orbit from the Batygin–Brown estimate, clearly marked as unconfirmed.
+- **The night sky.** Bright stars placed by RA/Dec and magnitude, plus the Milky Way.
+- **🛸 UFO mode.** Fly a third-person saucer through the system, glide to any body, orbit it, and scan it into the info card.
+
+## 🚀 Run it
+
+No build step. It's a static site, but `index.html` loads its scripts as modules, so serve it rather than double-clicking:
 
 ```bash
 git clone https://github.com/ChrisJDiMarco/solar-system-atlas.git
@@ -30,34 +33,49 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-Any static server works (`npx serve`, VS Code Live Server, GitHub Pages). It needs an internet connection the first time to load three.js from a CDN.
+Any static server works: `npx serve`, VS Code Live Server or GitHub Pages. The first load needs the internet to fetch three.js from jsDelivr.
 
-### Controls
+## 🎮 Controls
 
-- Drag to orbit, scroll or pinch to zoom, click a body to fly to it and follow it.
-- Space: pause or play. Keyboard shortcuts toggle layers (M moons, O orbits, and more).
-- ☰ opens Layers, Tonight, Moons and About.
+**Look around**
+- Drag to orbit, scroll or pinch to zoom, click any body to fly to it and follow it.
+- `/` search · `H` Sun · `E` Earth · `Esc` closes the info card
 
-## Files
+**Time**
+- `Space` pause or play · `R` real time · `N` now · `\` reverse
+- `[` slower · `]` faster · `.` / `,` step a day forward or back · `y` / `Y` a year forward or back
+
+**Layers**
+- `L` labels · `O` orbits · `M` moons · `B` belts · `C` comets · `K` Kuiper Belt
+- `X` Oort Cloud · `U` heliosphere · `P` Planet Nine · `V` spacecraft · `G` stars
+
+**UFO mode** (press **Fly UFO**)
+- `WASD` fly · `E` / `Q` up and down · `Shift` boost · drag to look
+- `F` scan · `G` go to · `T` orbit · `Esc` park & exit. Where you park is saved, so Fly UFO picks up there.
+
+The drawer (☰) has Layers, Tonight, Moons and About tabs.
+
+## 🗂 Files
 
 | File | What it does |
 |---|---|
-| `index.html` | Page layout and script order |
-| `style.css` | Interface styling |
-| `js/data.js` | Orbital elements and physical data for planets, moons, small bodies, spacecraft and stars |
-| `js/ephem.js` | Ephemeris math: Kepler solvers, Standish elements, coordinate transforms, light-time |
-| `js/state.js` | Saved settings and time/camera actions |
-| `js/shaders.js` | GLSL for planets, the Sun, rings and glows (log depth buffer) |
-| `js/belts.js` | Particle populations, Oort Cloud, heliosphere bubble and sky |
-| `js/ui.js` | Info card, drawer, search, time bar and labels |
-| `js/main.js` | three.js scene, camera, render loop and picking |
+| `index.html` | The whole Atlas: orbital data, ephemeris maths, shaders, scene, interface |
+| `ufo.css` | Styling for UFO mode |
+| `js/ship.js` | The UFO's saucer model and its effects |
+| `js/ufo.js` | UFO mode: flying, scanning, go to and orbit |
+| `LICENSE` | MIT |
 
-## Notes on accuracy
+## 🔭 About the accuracy
 
-Orbit geometry and positions are computed from real elements. Particle belts are representative seeded distributions, not catalogues. Planet surface features are hand-placed approximations. Spacecraft positions are extrapolated from their direction and speed. Planet Nine is hypothetical.
+- **Real:** orbit geometry and planet positions, computed from published elements. Planet accuracy is best between 1800 and 2050.
+- **Representative:** asteroid and Kuiper Belt particles are seeded distributions, not catalogues.
+- **Approximate:** planet surface features are hand-placed, and spacecraft positions are extrapolated from their direction and speed.
+- **Hypothetical:** Planet Nine. It's marked as such everywhere it appears.
 
-Inside Thinklet the Atlas saves its camera, time and layers; as a plain web page those settings simply aren't kept between visits.
+## 📝 Notes
 
-## License
+Built as a [Thinklet](https://thinklet.io) (a small AI-built app). Inside Thinklet the Atlas remembers your camera, time and layers. As a plain web page those settings aren't kept between visits.
+
+## 📜 License
 
 MIT. See [LICENSE](LICENSE).

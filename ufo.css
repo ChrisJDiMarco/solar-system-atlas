@@ -1,0 +1,28 @@
+/* UFO mode: flight HUD, scanner reticle and the Fly UFO button state */
+#ufoHud{position:fixed;top:48px;left:10px;width:min(232px,calc(100% - 20px));z-index:15;background:rgba(10,13,21,.82);backdrop-filter:blur(12px);border:1px solid rgba(127,233,255,.25);border-radius:12px;padding:9px 11px;box-shadow:0 8px 28px rgba(0,0,0,.45)}
+#ufoHud[hidden],#ufoRet[hidden]{display:none}
+.uh-k{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7fe9ff;font-weight:600}
+.uh-lock{font-size:14px;font-weight:600;margin:3px 0 4px;color:#c3ccd9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uh-lock.on{color:#9ff4ff}
+.uh-row{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:#9aa4b5;padding:1px 0}
+.uh-row b{color:#e8ecf3;font-weight:600;font-variant-numeric:tabular-nums;text-align:right;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.uh-btns{display:flex;gap:6px;margin:7px 0 5px}
+.uh-btns{margin:6px 0 4px}
+.uh-btns button{flex:1;padding:5px 2px;font-size:11px;white-space:nowrap;border-color:rgba(127,233,255,.4);color:#bff6ff}
+.uh-btns button[aria-pressed="true"]{background:rgba(127,233,255,.18);color:#fff}
+.uh-btns button[aria-disabled="true"]{opacity:.45}
+.uh-keys{font-size:9.5px;color:#7d889b;line-height:1.35}
+.uh-bar{height:3px;margin:5px 0 2px;border-radius:2px;background:rgba(127,233,255,.12);overflow:hidden}
+.uh-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#3fd6ff,#bff6ff);box-shadow:0 0 6px rgba(127,233,255,.7)}
+.uh-sub{margin-top:6px}
+.uh-scans{display:flex;flex-wrap:wrap;gap:4px;margin:3px 0 0;min-height:20px}
+.uh-scans button{font-size:10.5px;padding:2px 7px;border-color:rgba(127,233,255,.25);color:#cfeeff}
+.uh-none{font-size:10px;color:#7d889b}
+#ufoRet{position:fixed;left:0;top:0;width:28px;height:28px;border:1.5px solid rgba(127,233,255,.45);border-radius:50%;pointer-events:none;z-index:14;transition:border-color .15s,box-shadow .15s}
+#ufoRet.on{border-color:#7fe9ff;box-shadow:0 0 12px rgba(127,233,255,.6)}
+#ufoRet::after{content:"";position:absolute;left:50%;top:50%;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:#7fe9ff}
+/* While flying, the info card sits under the scanner HUD: its table gives way so the two never overlap */
+body.ufoOn #card table{max-height:calc(100vh - 430px)}
+#btnUfo[aria-pressed="true"]{background:rgba(127,233,255,.18);border-color:rgba(127,233,255,.55);color:#cdf8ff}
+#btnUfo:focus-visible,#uhScan:focus-visible,#uhGoto:focus-visible,#uhExit:focus-visible{outline:2px solid #7fe9ff;outline-offset:1px}
+@media (prefers-reduced-motion: reduce) { #ufoRet { transition: none } }
