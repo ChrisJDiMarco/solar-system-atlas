@@ -18,7 +18,7 @@ Built with [three.js](https://threejs.org) and real orbital data from [NASA JPL]
 - **Small bodies.** The main asteroid belt with Kirkwood gaps, Trojans, Hildas, Centaurs and the Kuiper Belt (classical, plutinos and scattered disk).
 - **Famous rocks and comets.** Apophis, Bennu, Psyche, Vesta, 2024 YR4, Halley, Hale-Bopp and Encke. The comets grow tails that point away from the Sun.
 - **The edge of the map.** The termination shock and heliopause bubble, Voyager 1 and 2, Pioneer 10 and 11, and the Oort Cloud.
-- **Planet Nine (hypothetical).** A dashed orbit from the Batygin–Brown estimate, clearly marked as unconfirmed.
+- **Planet Nine (hypothetical).** A dashed orbit from the Brown & Batygin (2021) estimate (a≈380 AU, about 6 Earth masses), clearly marked as unconfirmed. The older a≈500 AU estimate is selectable.
 - **The night sky.** Bright stars placed by RA/Dec and magnitude, plus the Milky Way.
 - **🛸 UFO mode.** Fly a third-person saucer through the system, glide to any body, orbit it, and scan it into the info card.
 
@@ -68,7 +68,7 @@ The drawer (☰) has Layers (with saved views), Tonight, Moons and About tabs.
 
 ## 🔭 About the accuracy
 
-- **Real:** orbit geometry and planet positions, computed from published elements. Planet accuracy is best between 1800 and 2050.
+- **Real:** orbit geometry and planet positions, computed from published elements. Planet accuracy is best between 1800 and 2050. Outside that range the positions are approximate, and the Atlas shows a note when you jump there.
 - **Representative:** asteroid and Kuiper Belt particles are seeded distributions, not catalogues.
 - **Approximate:** planet surface features are hand-placed, and spacecraft positions are extrapolated from their direction and speed.
 - **Hypothetical:** Planet Nine. It's marked as such everywhere it appears.

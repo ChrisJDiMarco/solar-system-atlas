@@ -297,7 +297,7 @@ App.D = {
   ],
   // Planet Nine (HYPOTHETICAL). a AU, e, i, Omega, varpi deg
   p9: {
-    brief: { label: 'a≈500 AU, e≈0.3 (brief)', a: 500, e: 0.3, i: 16, O: 96, varpi: 247, mass: 6 },
+    brief: { label: 'Earlier estimate: a≈500 AU, e≈0.3', a: 500, e: 0.3, i: 16, O: 96, varpi: 247, mass: 6 },
     bb2021: { label: 'Brown & Batygin 2021: a≈380, e≈0.2', a: 380, e: 0.2, i: 16, O: 96, varpi: 247, mass: 6.2 }
   },
   helio: { nose: [255.4, 5.2], ts: 90, hp: 121 },
@@ -409,8 +409,8 @@ window.App = window.App || {};
 window.App = window.App || {};
 (function () {
   const LAYERS = { orbits: true, labels: true, moons: true, belts: true, kuiper: true, oort: true, helio: true, p9: true, craft: true, comets: true, stars: true, milky: true };
-  const def = () => ({ v: 1, time: { live: true, jd: null, rate: 1, paused: false }, camera: { focus: 'Sun', dist: null, az: 0.6, el: 0.35 },
-    layers: { ...LAYERS }, moonFilter: {}, scale: { size: 'visible', dist: 'log' }, p9: 'brief', tab: 'layers', card: true, cardMini: false, drawer: false, recent: [], scans: [], ufo: null });
+  const def = () => ({ v: 2, time: { live: true, jd: null, rate: 1, paused: false }, camera: { focus: 'Sun', dist: null, az: 0.6, el: 0.35 },
+    layers: { ...LAYERS }, moonFilter: {}, scale: { size: 'visible', dist: 'log' }, p9: 'bb2021', tab: 'layers', card: true, cardMini: false, drawer: false, recent: [], scans: [], ufo: null });
   function load() {
     const s = def();
     let m = null; try { m = window.cabinet && cabinet.recall ? cabinet.recall('atlas', null) : null; } catch (e) {}
@@ -429,6 +429,8 @@ window.App = window.App || {};
     if (m.moonFilter && typeof m.moonFilter === 'object') for (const k in m.moonFilter) if (k.length < 40) s.moonFilter[k] = !!m.moonFilter[k];
     if (m.scale) { if (m.scale.size === 'true' || m.scale.size === 'visible') s.scale.size = m.scale.size; if (m.scale.dist === 'log' || m.scale.dist === 'linear') s.scale.dist = m.scale.dist; }
     if (m.p9 === 'bb2021' || m.p9 === 'brief') s.p9 = m.p9;
+    // version 2 made Brown & Batygin 2021 the default: a saved 'brief' from version 1 moves to it once; a 'brief' picked since is kept
+    if (s.p9 === 'brief' && (Number(m.v) || 1) < 2) s.p9 = 'bb2021';
     if (['layers', 'tonight', 'moons', 'about'].includes(m.tab)) s.tab = m.tab;
     if (typeof m.card === 'boolean') s.card = m.card;
     s.drawer = m.drawer === true;
@@ -459,6 +461,9 @@ window.App = window.App || {};
   document.addEventListener('visibilitychange', () => { if (document.hidden) flush(); });
   const MIN_JD = 2086302.5, MAX_JD = 2817152.5; // 1000–3000 AD
   const S = App.state;
+  // a date set by a jump or a step (the date box, setDate, nextEvent, the step keys) says once when it lands outside 1800–2050;
+  // deferred a tick so it shows after the caller's own line (e.g. "Jumped to …")
+  function rangeNote() { const y = App.E.jdToDate(App.sim.jd).getUTCFullYear(); if ((y < 1800 || y > 2050) && App.ui) App.ui.toast('Planet positions outside 1800–2050 are approximate.', 4200); }
   App.actions = {
     setRate(r) { r = Number(r); if (!Number.isFinite(r)) throw new Error('That speed could not be read.'); S.time.rate = Math.max(-3.15576e7, Math.min(3.15576e7, r)); S.time.live = false; S.time.paused = false; App.save(); emit('time'); },
     reverse() { S.time.rate = -S.time.rate; S.time.live = false; App.save(); emit('time'); },
@@ -469,6 +474,7 @@ window.App = window.App || {};
       const d = date instanceof Date ? date : new Date(String(date).length <= 10 ? date + 'T12:00:00Z' : date);
       if (isNaN(d)) throw new Error('That date could not be read.');
       App.sim.jd = Math.max(MIN_JD, Math.min(MAX_JD, App.E.dateToJd(d))); S.time.live = false; App.save(); emit('time');
+      setTimeout(rangeNote, 0);
       return App.sim.jd;
     },
     // steps the Atlas by a day or a month and holds the clock there, so the step stays put (, . < > keys)
@@ -476,7 +482,8 @@ window.App = window.App || {};
       n = Number(n); if (!Number.isFinite(n)) throw new Error('That step could not be read.');
       let jd = App.sim.jd;
       if (unit === 'month') { const d = App.E.jdToDate(jd); d.setUTCMonth(d.getUTCMonth() + n); jd = App.E.dateToJd(d); } else jd += n;
-      App.sim.jd = Math.max(MIN_JD, Math.min(MAX_JD, jd)); S.time.live = false; S.time.paused = true; App.save(); emit('time'); return App.sim.jd;
+      App.sim.jd = Math.max(MIN_JD, Math.min(MAX_JD, jd)); S.time.live = false; S.time.paused = true; App.save(); emit('time');
+      setTimeout(rangeNote, 0); return App.sim.jd;
     },
     focus(name) { if (App.bodies && !App.bodies[name]) throw new Error('No body named ' + name + ' in the Atlas.'); S.camera.focus = name; if (name !== 'Sun') S.recent = [name, ...S.recent.filter(x => x !== name)].slice(0, 6); App.save(); emit('focus'); },
     toggleLayer(k, v) { if (!(k in S.layers)) throw new Error('No layer ' + k); S.layers[k] = typeof v === 'boolean' ? v : !S.layers[k]; App.save(); emit('layers'); return S.layers[k]; },
@@ -1024,7 +1031,7 @@ App.ui = (function () {
       <div class="k" style="color:var(--ink3)">Distances</div><div class="seg"><button data-s="dist:linear" class="${S.scale.dist === 'linear' ? 'on' : ''}">Linear</button><button data-s="dist:log" class="${S.scale.dist === 'log' ? 'on' : ''}">Logarithmic</button></div>
       ${forced ? '<p style="color:var(--ink3);margin:2px 0 6px">Log distances use visible sizes; pick Linear for true scale.</p>' : ''}
       ${LAYERS.map(([k, n]) => `<div class="lay"><span>${n}</span><button class="sw ${S.layers[k] ? 'on' : ''}" data-l="${k}" role="switch" aria-checked="${S.layers[k]}" aria-label="${n}"></button></div>`).join('')}
-      <div class="k" style="color:var(--ink3);margin-top:6px">Planet Nine orbit (estimate)</div><div class="seg"><button data-p="brief" class="${S.p9 === 'brief' ? 'on' : ''}">a≈500 e≈0.3</button><button data-p="bb2021" class="${S.p9 === 'bb2021' ? 'on' : ''}">BB 2021: a≈380</button></div>`;
+      <div class="k" style="color:var(--ink3);margin-top:6px">Planet Nine orbit (estimate)</div><div class="seg"><button data-p="bb2021" class="${S.p9 === 'bb2021' ? 'on' : ''}">Brown &amp; Batygin 2021: a≈380</button><button data-p="brief" class="${S.p9 === 'brief' ? 'on' : ''}">Earlier estimate: a≈500</button></div>`;
       body.querySelectorAll('[data-s]').forEach(b => b.onclick = () => { const [k, v] = b.dataset.s.split(':'); App.actions.setScale(k, v); tabs(); });
       body.querySelectorAll('[data-l]').forEach(b => b.onclick = () => { App.actions.toggleLayer(b.dataset.l); tabs(); });
       body.querySelectorAll('[data-p]').forEach(b => b.onclick = () => { App.actions.setP9(b.dataset.p); tabs(); });
@@ -1493,7 +1500,6 @@ function frameBody() {
   else if (!ts_.paused) App.sim.jd = Math.max(2086302.5, Math.min(2817152.5, App.sim.jd + dt * ts_.rate / 86400));
   if (!Number.isFinite(App.sim.jd)) { App.sim.jd = E.jdNow(); S.time.live = true; }
   const jd = App.sim.jd;
-  { const out = jd < 2378496.5 || jd > 2470172.5; if (out && !frameBody._warned) { frameBody._warned = true; try { hint('Beyond 1800–2050: planet positions are estimates (Standish elements lose accuracy)'); } catch (e) {} } else if (!out) frameBody._warned = false; }
   if (Math.abs(jd - orbitJd) > 3650) buildOrbits(jd);
   computePositions(jd);
   const fb = focusBody();
@@ -1707,7 +1713,7 @@ try { if (window.cabinet && cabinet.actions && cabinet.actions.define) cabinet.a
   return { message: `${nx.label} on ${date}${days > 0 ? ', in ' + days + ' days' : ''}${jump ? ' · Atlas set there, paused' : ''}.`, found: true, label: nx.label, date, days }; });
 } catch (e) { console.warn(e); }
 try { if (window.cabinet) {
-  if (cabinet.describeMemory) cabinet.describeMemory({ atlas: 'Atlas settings { v:1, time:{live,jd,rate (sim s per s),paused}, camera:{focus,dist,az,el}, layers:{name:bool}, moonFilter:{parent:false}, scale:{size:visible|true,dist:log|linear}, p9:brief|bb2021, tab, card, cardMini, recent:[names], scans:[names, newest first, up to 5, logged by UFO scans], ufo:{au:[x,y,z] heliocentric AU where the UFO was parked, at:ms} or null }',
+  if (cabinet.describeMemory) cabinet.describeMemory({ atlas: 'Atlas settings { v:2, time:{live,jd,rate (sim s per s),paused}, camera:{focus,dist,az,el}, layers:{name:bool}, moonFilter:{parent:false}, scale:{size:visible|true,dist:log|linear}, p9:brief|bb2021, tab, card, cardMini, recent:[names], scans:[names, newest first, up to 5, logged by UFO scans], ufo:{au:[x,y,z] heliocentric AU where the UFO was parked, at:ms} or null }',
     atlasHinted: 'true once the first-visit key tip has been shown',
     skyDay: 'local date (YYYY-MM-DD) the daily Moon line was last shown on a live view',
     views: 'saved views { v:1, list:[{ id, name, at (ms), focus (body name), jd (Atlas date, null = live), layers:{name:bool}, size:visible|true, dist:log|linear }] }, newest first, up to 6' });
